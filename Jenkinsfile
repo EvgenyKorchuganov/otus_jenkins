@@ -14,7 +14,7 @@ pipeline
         }
 
         failure {
-            bta "echo failure"
+            bat "echo failure"
         }
 
         success {
