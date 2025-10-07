@@ -22,26 +22,7 @@ pipeline
         }
     }
 
-    stages {
-        stage('Setup Git') {
-            steps {
-                sh '''
-                    git config --global http.postBuffer 1048576000   # 1 ГБ
-                    git config --global https.postBuffer 1048576000
-                    git config --global http.lowSpeedLimit 0
-                    git config --global http.lowSpeedTime 999999
-                '''
-            }
-        }
-        stage('Checkout') {
-            steps {
-                retry(3) {
-                    checkout scm
-                }
-            }
-        }
-    }
-    
+        
     stages {
         stage("Build test base") {
             steps {
