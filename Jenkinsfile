@@ -11,6 +11,7 @@ pipeline
     post {
         always {
             allure includeProperties: false, jdk: '', results: [[path: 'out/syntax-check/allure']]
+            junit junit 'out/run-tests/junit/junit.xml'
             junit stdioRetention: 'ALL', testResults: 'out/syntax-check/junit/*.xml'
         }
 
@@ -35,8 +36,13 @@ pipeline
             steps {
               bat "chcp 65001\n vrunner syntax-check"  
             }
+        }
 
-        }   
+        stage("Run Functional Tests") {
+            steps {
+               bat "vrunner run --settings=env.json --profile=run-tests" 
+            }
+        }      
         
     }
 }
