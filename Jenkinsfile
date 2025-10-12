@@ -10,7 +10,7 @@ pipeline
 
     post {
         always {
-            allure includeProperties: false, jdk: '', results: [[path: 'out/run-tests/allure']]
+            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             junit stdioRetention: 'ALL', testResults: 'out/syntax-check/junit/*.xml'
         }
 
