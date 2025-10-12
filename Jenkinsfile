@@ -39,7 +39,7 @@ pipeline
 
         stage("Run Functional Tests") {
             steps {
-               bat "chcp 65001\n vrunner run --settings=env.json --profile=run-tests" 
+               bat "chcp 65001\n vrunner run --env=env.json --env-name=run-tests" 
             }
         }      
         
